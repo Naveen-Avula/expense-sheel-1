@@ -7,14 +7,14 @@ check_root
 echo "please enter the DB password:"
 read -s mysql_root_password
 
-dnf install mysql-servvver -y &>>$LOGFILE
-#VALIDATE $? "Installing MySQL Server"
+dnf install mysql-server -y &>>$LOGFILE
+
 
 systemctl enable mysqld &>>$LOGFILE
-#VALIDATE $? "Enabling MySQL Server"
+
 
 systemctl start mysqld &>>$LOGFILE
-#VALIDATE $? "Starting MySQL Server"
+
 
 # mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
 # VALIDATE $? "Setting up root password"
@@ -25,7 +25,7 @@ mysql -h db.naveen.sbs -uroot -p${mysql_root_password} -e 'show databases;' &>>$
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
-    #VALIDATE $? "MySQL Root password Setup"
+   
 else
  echo "Mysql root pwd is already setup"
  fi
