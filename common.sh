@@ -17,7 +17,8 @@ then
     exit 1 # manually exit if error comes.
 else
     echo "You are super user."
-    }
+
+  }
 
 fi
 VALIDATE(){
